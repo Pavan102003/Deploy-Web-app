@@ -1,0 +1,4 @@
+# Exclude environment variables and local cache
+.env
+__pycache__
+*.pyc
