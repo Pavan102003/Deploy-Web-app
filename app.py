@@ -49,5 +49,5 @@ def upload_file():
         return "File type not allowed"
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+
