@@ -3,16 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Uploader</title>
+    <title>Cloud File Uploader</title>
+    <style>
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #1a73e8;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+       
+        input[type="file"] {
+            display: none; 
+        }
+
+        .file-upload-label {
+            display: block;
+            padding: 12px 20px;
+            background-color: #e8f0fe;
+            color: #1a73e8;
+            border: 2px dashed #a7c8f9;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.2s;
+            font-weight: 600;
+        }
+
+        .file-upload-label:hover {
+            background-color: #d2e3fc;
+        }
+
+        
+        button[type="submit"] {
+            padding: 12px 30px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.1s;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #1562c2;
+        }
+
+        button[type="submit"]:active {
+            transform: scale(0.99);
+        }
+
+        
+        .success-message {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #e6ffed;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            color: #388e3c;
+            text-align: left;
+            word-wrap: break-word; 
+        }
+
+        .success-message a {
+            color: #1a73e8;
+            word-break: break-all;
+        }
+    </style>
 </head>
 <body>
-    <h2>Upload a File</h2>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" required>
-        <button type="submit">Upload</button>
-    </form>
-    {% if file_url %}
-        <p>File uploaded successfully: <a href="{{ file_url }}" target="_blank">{{ file_url }}</a></p>
-    {% endif %}
+    <div class="container">
+        <h2>Upload a File to S3</h2>
+        
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            
+            <input type="file" name="file" id="file" required 
+                   onchange="updateFileName(this)">
+            
+            <label for="file" class="file-upload-label">
+                <span id="file-name-display">Choose File (max 5MB, e.g., JPG, PDF)</span>
+            </label>
+            
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if file_url %}
+            <p class="success-message">
+                File uploaded successfully: <br>
+                <a href="{{ file_url }}" target="_blank">{{ file_url }}</a>
+            </p>
+        {% endif %}
+    </div>
+
+    <script>
+        
+        function updateFileName(input) {
+            const display = document.getElementById('file-name-display');
+            if (input.files.length > 0) {
+                display.textContent = 'Selected: ' + input.files[0].name;
+            } else {
+                display.textContent = 'Choose File (max 5MB, e.g., JPG, PDF)';
+            }
+        }
+    </script>
 </body>
 </html>
