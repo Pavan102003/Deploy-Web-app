@@ -1,18 +1,18 @@
 # Deploy-Web-app
 
-#Simple Cloud File Uploader ☁️
+Simple Cloud File Uploader 
 
 Host Link : https://deploy-web-app-ud17-2ur3pbiy0-pavan-ks-projects-e631c4b6.vercel.app/
 
 Live Demo: 
 
-Cloud Platform: AWS S3 
+Cloud Platform : AWS S3 
 
-Backend:Python Flask
+Backend : Python Flask
 
-Frontend: HTML/Css/JS 
+Frontend : HTML/Css/JS 
 
-Hosting: Vercel 
+Hosting : Vercel 
 
 #Project Objective
 
@@ -31,9 +31,9 @@ Type Checking: [Detail Bonus Feature 2] (e.g., Only image/jpeg, image/png, and t
 The Secure Configuration and Deployment 
 The most significant challenge involved establishing a secure and compliant workflow for handling sensitive cloud credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, etc.) across different environments, specifically:
 
-Preventing Exposure: Ensuring these highly sensitive keys were never committed to the GitHub repository, even when using a local .env file for development.
+Preventing Exposure : Ensuring these highly sensitive keys were never committed to the GitHub repository, even when using a local .env file for development.
 
-Deployment Parity: Configuring the serverless host (e.g., Vercel) to securely read these variables at runtime, as the local .env file is ignored during the build process.
+Deployment Parity : Configuring the serverless host (e.g., Vercel) to securely read these variables at runtime, as the local .env file is ignored during the build process.
 
 This process taught me the critical difference between local configuration and secure cloud deployment. It emphasized the importance of using the platform's (Vercel) secret environment variable management tools over relying on files
 
