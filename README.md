@@ -6,7 +6,7 @@ Host Link : https://deploy-web-app-ud17-2ur3pbiy0-pavan-ks-projects-e631c4b6.ver
 
 Live Demo : https://drive.google.com/file/d/1I6_xnPMXNHhxzFy86ypZxCflYfdvNDn5/view?usp=drivesdk 
 
-GitHub Repo : 
+GitHub Repo : https://github.com/Pavan102003/Deploy-Web-app
 
 Cloud Platform : AWS S3 
 
